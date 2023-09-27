@@ -1,13 +1,72 @@
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+
+.calendar {
+  width: 100%;
+  min-height: 100%;
+  margin: 0 auto;
+  font-family: Arial, sans-serif;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #0074d9;
+  color: #fff;
+  padding: 10px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+
+.header button {
+  background-color: transparent;
+  border: none;
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.header button:hover {
+  text-decoration: underline;
+}
+
+.header h2 {
+  margin: 0;
+  font-size: 18px;
+}
+
+.days {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.days th {
+  background-color: #0074d9;
+  color: #fff;
+  padding: 10px;
+  font-weight: bold;
+}
+
+.days td {
+  padding: 10px;
+  text-align: center;
+  border: 1px solid #ccc;
+}
+
+.days td:hover {
+  background-color: #f0f0f0;
 }
