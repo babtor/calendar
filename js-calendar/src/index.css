@@ -62,6 +62,8 @@ code {
 }
 
 .days td {
+  width: 100px;
+  height: 100px;
   padding: 10px;
   text-align: center;
   border: 1px solid #ccc;
