@@ -7,12 +7,16 @@ import {
   addMonths,
   subMonths,
   getDay,
+  setDay,
+  startOfWeek,
 } from "date-fns";
 import { Link } from "react-router-dom";
 
 function Calendar() {
   // Initialize current date to today
   const [currentDate, setCurrentDate] = useState(new Date());
+
+  const locale = require("date-fns/locale/en-US");
 
   const firstDayOfMonth = parse(
     format(currentDate, "yyyy-MM-01"),
@@ -22,8 +26,13 @@ function Calendar() {
 
   const lastDayOfMonth = endOfMonth(firstDayOfMonth);
 
+  const firstDayOfWeek = startOfWeek(firstDayOfMonth, { locale });
+
+  const correctedFirstDayOfMonth = setDay(firstDayOfWeek, 0, { locale });
+
+  // Create an array of dates for the current month
   const datesInMonth = eachDayOfInterval({
-    start: firstDayOfMonth,
+    start: correctedFirstDayOfMonth,
     end: lastDayOfMonth,
   });
 
