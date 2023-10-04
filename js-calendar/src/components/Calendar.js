@@ -13,33 +13,26 @@ import {
 import { Link } from "react-router-dom";
 
 function Calendar() {
-  // Initialize current date to today
-  const [currentDate, setCurrentDate] = useState(new Date());
-
-  const locale = require("date-fns/locale/en-US");
-
+  const [currentDate, setCurrentDate] = useState(new Date()); // Initialize current date to today
+  const locale = require("date-fns/locale/en-US"); // Force to use en-US locale, otherwise dates become bugged.
   const firstDayOfMonth = parse(
     format(currentDate, "yyyy-MM-01"),
     "yyyy-MM-dd",
     new Date()
   );
-
   const lastDayOfMonth = endOfMonth(firstDayOfMonth);
-
   const firstDayOfWeek = startOfWeek(firstDayOfMonth, { locale });
-
   const correctedFirstDayOfMonth = setDay(firstDayOfWeek, 0, { locale });
-
   // Create an array of dates for the current month
   const datesInMonth = eachDayOfInterval({
     start: correctedFirstDayOfMonth,
     end: lastDayOfMonth,
   });
 
+  // For skipping forwards or backwards in months
   const goToNextMonth = () => {
     setCurrentDate(addMonths(currentDate, 1));
   };
-
   const goToPreviousMonth = () => {
     setCurrentDate(subMonths(currentDate, 1));
   };
@@ -55,7 +48,7 @@ function Calendar() {
         <thead>
           <tr>
             {["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"].map((day) => (
-              <th key={day}>{day}</th>
+              <th>{day}</th>
             ))}
           </tr>
         </thead>
@@ -63,7 +56,7 @@ function Calendar() {
           {createCalendarGrid(datesInMonth).map((week, index) => (
             <tr key={index}>
               {week.map((date) => (
-                <td key={format(date, "yyyy-MM-dd")}>
+                <td>
                   <Link to={`/date/${format(date, "yyyy-MM-dd")}`}>
                     {format(date, "d")}
                   </Link>
