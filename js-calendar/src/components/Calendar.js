@@ -6,26 +6,27 @@ import {
   endOfMonth,
   addMonths,
   subMonths,
-  getDay,
   setDay,
   startOfWeek,
 } from "date-fns";
 import { Link } from "react-router-dom";
+import { createCalendarGrid } from "../utils/functions";
 
 function Calendar() {
   const [currentDate, setCurrentDate] = useState(new Date()); // Initialize current date to today
   const locale = require("date-fns/locale/en-US"); // Force to use en-US locale, otherwise dates become bugged.
   const firstDayOfMonth = parse(
+    // Calculates amount of days in the month
     format(currentDate, "yyyy-MM-01"),
     "yyyy-MM-dd",
     new Date()
   );
   const lastDayOfMonth = endOfMonth(firstDayOfMonth);
   const firstDayOfWeek = startOfWeek(firstDayOfMonth, { locale });
-  const correctedFirstDayOfMonth = setDay(firstDayOfWeek, 0, { locale });
+  const gridFirstDayOfMonth = setDay(firstDayOfWeek, 0, { locale });
   // Create an array of dates for the current month
   const datesInMonth = eachDayOfInterval({
-    start: correctedFirstDayOfMonth,
+    start: gridFirstDayOfMonth,
     end: lastDayOfMonth,
   });
 
@@ -35,6 +36,10 @@ function Calendar() {
   };
   const goToPreviousMonth = () => {
     setCurrentDate(subMonths(currentDate, 1));
+  };
+  // return localstorage based on date-format
+  const getReminderData = (date) => {
+    return localStorage.getItem(`Reminder-${format(date, "yyyy-MM-dd")}`);
   };
 
   return (
@@ -57,8 +62,10 @@ function Calendar() {
             <tr key={index}>
               {week.map((date) => (
                 <td>
+                  {/* Map out values to specific dates and link to new pages */}
                   <Link to={`/date/${format(date, "yyyy-MM-dd")}`}>
                     {format(date, "d")}
+                    <p>{getReminderData(date)}</p>
                   </Link>
                 </td>
               ))}
@@ -69,25 +76,4 @@ function Calendar() {
     </div>
   );
 }
-
-function createCalendarGrid(datesInMonth) {
-  const calendarGrid = [];
-  let currentWeek = [];
-
-  datesInMonth.forEach((date) => {
-    currentWeek.push(date);
-
-    if (getDay(date) === 6) {
-      calendarGrid.push([...currentWeek]);
-      currentWeek = [];
-    }
-  });
-
-  if (currentWeek.length > 0) {
-    calendarGrid.push([...currentWeek]);
-  }
-
-  return calendarGrid;
-}
-
 export default Calendar;
