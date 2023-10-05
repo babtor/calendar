@@ -6,16 +6,30 @@ import { useLocalStorage } from "../utils/functions";
 function DatePage() {
   const { dateId } = useParams();
   const [reminder, setReminder] = useLocalStorage(`Reminder-${dateId}`, "");
+  const [time, setTime] = useLocalStorage(`Time-${dateId}`, "");
   return (
     <>
       <div>
-        <h2>Blank Date Page</h2>
+        <h2>Set your reminders here</h2>
         <p>Date: {dateId}</p>
-        <p>{reminder}</p>
+        <p>
+          {time}:{reminder}
+        </p>
       </div>
       <form>
-        <input value={reminder} onChange={(e) => setReminder(e.target.value)} />
+        <input
+          type="text"
+          value={reminder}
+          placeholder="What do you need to remember?"
+          onChange={(e) => setReminder(e.target.value)}
+        />
         <input type="submit" value="Submit"></input>
+        <br></br>
+        <input
+          type="text"
+          value={time}
+          placeholder="At what time?"
+          onChange={(e) => setTime(e.target.value)}></input>
       </form>
     </>
   );

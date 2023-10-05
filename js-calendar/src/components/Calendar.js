@@ -12,6 +12,8 @@ import {
 import { Link } from "react-router-dom";
 import { createCalendarGrid } from "../utils/functions";
 
+// TODO: Implement a way to choose time for reminders
+
 function Calendar() {
   const [currentDate, setCurrentDate] = useState(new Date()); // Initialize current date to today
   const locale = require("date-fns/locale/en-US"); // Force to use en-US locale, otherwise dates become bugged.
