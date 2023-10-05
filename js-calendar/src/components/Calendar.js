@@ -21,7 +21,7 @@ function Calendar() {
     "yyyy-MM-dd",
     new Date()
   );
-  const lastDayOfMonth = endOfMonth(firstDayOfMonth);
+  const lastDayOfMonth = endOfMonth(firstDayOfMonth, { locale });
   const firstDayOfWeek = startOfWeek(firstDayOfMonth, { locale });
   const gridFirstDayOfMonth = setDay(firstDayOfWeek, 0, { locale });
   // Create an array of dates for the current month
