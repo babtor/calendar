@@ -21,13 +21,12 @@ export function useLocalStorage(key, initialValue) {
   return [data, setData];
 }
 // Creates grid layout for dates
-export function createCalendarGrid(datesInMonth) {
+export function calendarGrid(datesInMonth) {
   const calendarGrid = [];
   let currentWeek = [];
 
   datesInMonth.forEach((date) => {
     currentWeek.push(date);
-
     if (getDay(date) === 6) {
       calendarGrid.push([...currentWeek]);
       currentWeek = [];
@@ -37,6 +36,5 @@ export function createCalendarGrid(datesInMonth) {
   if (currentWeek.length > 0) {
     calendarGrid.push([...currentWeek]);
   }
-
   return calendarGrid;
 }

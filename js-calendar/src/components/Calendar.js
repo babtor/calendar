@@ -10,7 +10,7 @@ import {
   startOfWeek,
 } from "date-fns";
 import { Link } from "react-router-dom";
-import { createCalendarGrid } from "../utils/functions";
+import { calendarGrid } from "../utils/functions";
 
 //TODO: Have reminders saved as list rather than inputs?
 
@@ -31,7 +31,6 @@ function Calendar() {
     start: gridFirstDayOfMonth,
     end: lastDayOfMonth,
   });
-
   // For skipping forwards or backwards in months
   const goToNextMonth = () => {
     setCurrentDate(addMonths(currentDate, 1));
@@ -60,7 +59,7 @@ function Calendar() {
           </tr>
         </thead>
         <tbody>
-          {createCalendarGrid(datesInMonth).map((week, index) => (
+          {calendarGrid(datesInMonth).map((week, index) => (
             <tr key={index}>
               {week.map((date) => (
                 <td>
