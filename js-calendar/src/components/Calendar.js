@@ -12,8 +12,6 @@ import {
 import { Link } from "react-router-dom";
 import { createCalendarGrid } from "../utils/functions";
 
-// TODO: Implement a way to choose time for reminders
-
 //TODO: Have reminders saved as list rather than inputs?
 
 function Calendar() {

@@ -72,3 +72,24 @@ code {
 .days td:hover {
   background-color: #f0f0f0;
 }
+
+.wrapperDiv {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.wrapperDiv h2 {
+  font-size: 50px;
+}
+
+.wrapperDiv p {
+  display: flex;
+  font-size: 25px;
+  justify-content: center;
+}
+
+.reminderForm input {
+  width: 300px;
+}
