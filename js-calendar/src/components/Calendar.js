@@ -14,6 +14,8 @@ import { createCalendarGrid } from "../utils/functions";
 
 // TODO: Implement a way to choose time for reminders
 
+//TODO: Have reminders saved as list rather than inputs?
+
 function Calendar() {
   const [currentDate, setCurrentDate] = useState(new Date()); // Initialize current date to today
   const locale = require("date-fns/locale/en-US"); // Force to use en-US locale, otherwise dates become bugged.
