@@ -13,7 +13,6 @@ function App() {
             <Link to="/">Home</Link>
           </li>
         </ul>
-
         <Routes>
           <Route path="/" element={<Calendar />} />
           <Route path="/date/:dateId" element={<DatePage />} />

@@ -13,6 +13,7 @@ import { Link } from "react-router-dom";
 import { calendarGrid } from "../utils/functions";
 
 //TODO: Have reminders saved as list rather than inputs?
+//TODO: Add indicator for current date
 
 function Calendar() {
   const [currentDate, setCurrentDate] = useState(new Date()); // Initialize current date to today
